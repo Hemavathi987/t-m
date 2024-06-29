@@ -1,50 +1,34 @@
-﻿using System;
-using System.Threading;
+﻿
+using System;
 
-namespace MultithreadingApplication
+namespace Access4
 {
-    class ThreadCreationProgram
+    internal class Complex
     {
-        public static void CallToChildThread()
+        internal int real;
+        internal int img;
+
+        public void setData(int r, int i)
         {
-            Console.WriteLine("Child thread starts");
-            for (int i = 0; i <= 5; i++)
-            {
-                Console.WriteLine(i);
-            }
-            xcvb
-        }
-        static void Main(string[] args)
-        {
-            ThreadStart childref = new ThreadStart(CallToChildThread);
-            Console.WriteLine("In Main: Creating the Child thread");
-            for(int i=0;i<=5;i++)
-            {
-                Console.WriteLine(i);
-            }
-            Thread childThread = new Thread(childref);
-            childThread.Start();
-            Thread childThread1 = new Thread(childref);
-            childThread1.Start();   
-            Console.ReadKey();
+            real = r;
+            img = i;
         }
 
+        public void displayData()
+        {
+            Console.WriteLine("Real "+ real);
+            Console.WriteLine("Imaginary "+ img);
+        }
     }
-    class demo
-    {
-        public static void CallToChildThread1()
-        {
-            Console.WriteLine("Child thread starts");
 
-            // the thread is paused for 5000 milliseconds
-            int sleepfor = 5000;
-            for (int i = 0; i <= 5; i++)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine("Child Thread Paused for {0} seconds", sleepfor);
-            Thread.Sleep(sleepfor);
-            Console.WriteLine("Child thread resumes");
+    class Program
+    {
+        static void Main(string[] args)
+        {          
+            Complex c = new Complex();
+            c.setData(2, 1);
+            c.displayData();
         }
     }
 }
+
